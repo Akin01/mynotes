@@ -1,15 +1,18 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+
+const base = import.meta.env.BASE_URL;  // e.g. "/mynotes"
+const url = (path: string) => base === '/' ? `/${path}` : `${base}/${path}`;
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href={base || '/'}>{SITE_TITLE}</a></h2>
 		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+			<HeaderLink href={base || '/'}>Home</HeaderLink>
+			<HeaderLink href={url('blog')}>Blog</HeaderLink>
+			<HeaderLink href={url('about')}>About</HeaderLink>
 		</div>
 		<div class="social-links">
 			<a href="https://pagescms.org" target="_blank" title="PagesCMS">

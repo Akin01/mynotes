@@ -6,6 +6,9 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
+const base = import.meta.env.BASE_URL;
+const url = (path: string) => base === '/' ? `/${path}` : `${base}/${path}`;
+
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
@@ -92,7 +95,7 @@ const posts = (await getCollection('blog'))
 			<div class="blog-list">
 				<h2>Latest Posts</h2>
 				{posts.map((post) => (
-					<a href={`/blog/${post.id}/`} class="post-card">
+					<a href={url(`blog/${post.id}`)} class="post-card">
 						<h3>{post.data.title}</h3>
 						<p>{post.data.description}</p>
 						<div class="date">
@@ -100,9 +103,10 @@ const posts = (await getCollection('blog'))
 						</div>
 					</a>
 				))}
-				<a href="/blog" class="view-all">View all posts →</a>
+				<a href={url('blog')} class="view-all">View all posts →</a>
 			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+
