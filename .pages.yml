@@ -1,0 +1,81 @@
+# PagesCMS Configuration for Astro Blog
+# Docs: https://pagescms.org/docs
+
+media:
+  # Upload folder for images — mapped to Astro's public directory
+  input: public/images
+  output: /images
+  # Media categories for organization
+  categories:
+    - name: hero
+      label: Hero Images
+      path: hero
+    - name: general
+      label: General
+      path: general
+
+content:
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: src/content/blog
+    # Fields match the Astro content schema (src/content.config.ts)
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: true
+        description: A short description for SEO and previews
+      - name: pubDate
+        label: Publish Date
+        type: date
+        required: true
+      - name: updatedDate
+        label: Updated Date
+        type: date
+        required: false
+      - name: heroImage
+        label: Hero Image
+        type: image
+        required: false
+      - name: body
+        label: Content
+        type: rich-text
+        required: true
+    # List view configuration
+    view:
+      fields:
+        - title
+        - pubDate
+      sort:
+        field: pubDate
+        direction: desc
+    # Filename pattern for new posts
+    filename:
+      format: slug
+      extension: md
+
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/content/pages
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: false
+      - name: body
+        label: Content
+        type: rich-text
+        required: true
+    view:
+      fields:
+        - title

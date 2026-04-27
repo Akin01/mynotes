@@ -1,0 +1,19 @@
+---
+import { AUTHOR, SITE_TITLE } from '../consts';
+const today = new Date();
+---
+
+<footer>
+	<p>&copy; {today.getFullYear()} {SITE_TITLE}. Built with <a href="https://astro.build" target="_blank">Astro</a> & managed with <a href="https://pagescms.org" target="_blank">PagesCMS</a>.</p>
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 6em 1em;
+		color: rgb(var(--gray));
+		text-align: center;
+		font-size: 0.9em;
+	}
+	footer a {
+		color: var(--accent);
+	}
+</style>

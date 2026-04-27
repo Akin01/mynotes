@@ -1,0 +1,53 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="About | PagesCMS Blog" description="About this blog and how it's built." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article>
+				<h1>About This Blog</h1>
+				<p>
+					This is a modern blog built with <strong>Astro</strong> and managed through
+					<strong>PagesCMS</strong>. PagesCMS is an open-source CMS that edits content directly
+					in your GitHub repository — no database, no API, no extra backend.
+				</p>
+
+				<h2>How It Works</h2>
+				<p>
+					All blog posts live as Markdown files in the repository. PagesCMS provides a
+					beautiful editing interface on top of these files. When you edit content through
+					PagesCMS, changes are committed directly to your Git repository and your site
+					automatically rebuilds (via Vercel, Netlify, Cloudflare Pages, or any CI/CD pipeline).
+				</p>
+
+				<h2>The Stack</h2>
+				<ul>
+					<li><strong>Static Site Generator:</strong> Astro v6</li>
+					<li><strong>CMS:</strong> PagesCMS (open-source, Git-based)</li>
+					<li><strong>Hosting:</strong> Deploy anywhere — Vercel, Netlify, Cloudflare Pages</li>
+					<li><strong>Styling:</strong> Custom CSS with the Atkinson Hyperlegible font</li>
+				</ul>
+
+				<h2>Get Started</h2>
+				<p>
+					To start editing content:
+				</p>
+				<ol>
+					<li>Push this repository to GitHub</li>
+					<li>Go to <a href="https://app.pagescms.org">app.pagescms.org</a></li>
+					<li>Sign in with GitHub and open your repository</li>
+					<li>Start editing blog posts and pages!</li>
+				</ol>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
